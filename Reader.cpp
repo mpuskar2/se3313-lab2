@@ -4,7 +4,7 @@
 struct MyShared{
     int threadNumber;
     int reportID;
-    int delay;
+    int totalTime;
 };
 
 int main(void)
@@ -13,7 +13,7 @@ int main(void)
 
     int count = 0;
     while (count < 30){
-        std::cout<<"Thread Number: " << sharedMemory->threadNumber << ", Report ID: " << sharedMemory->reportID << ", Delay: " << sharedMemory->delay <<"\n";
+        std::cout<<"Thread Number: " << sharedMemory->threadNumber << ", Report ID: " << sharedMemory->reportID << ", Total Time: " << sharedMemory->totalTime <<"\n";
         count++;
         sleep(1);
     }

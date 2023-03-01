@@ -7,7 +7,7 @@
 struct MyShared{
     int threadNumber;
     int reportID;
-    int delay;
+    int totalTime;
 };
 
 class WriterThread : public Thread{
@@ -30,11 +30,15 @@ public:
         {
             //write to shared memory
             this->reportID++;
-            sleep(delay);
 
+            time_t startTime = time(nullptr);
+            sleep(delay);
+            time_t endTime = time(nullptr);
+
+            int totalTime = endTime - startTime;
             sharedMemory-> threadNumber = threadNum;
             sharedMemory-> reportID = reportID;
-            sharedMemory-> delay = delay;
+            sharedMemory-> totalTime = totalTime;
 
             if(flag){//Exit loop to end the thread
                 break;
